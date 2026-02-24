@@ -105,20 +105,26 @@ let arquivosAutenticado = false;
 const arquivosForm = document.getElementById('arquivos-login-form');
 const arquivosError = document.getElementById('arquivos-login-error');
 
-// Credencial ÚNICA para arquivos classificados
-const ARQUIVO_USER = 'omega';
-const ARQUIVO_PASS = 'BlackSun#29';
+// Credenciais para arquivos classificados
+const ARQUIVO_CREDENCIAIS = [
+    { usuario: 'omega', senha: 'BlackSun#29', nivel: 'total' },
+    { usuario: 'sigma', senha: 'ExpurgoOnly#29', nivel: 'expurgo' }
+];
+let arquivoNivelAcesso = null;
 
 // ===== CONTEÚDO DOS ARQUIVOS CLASSIFICADOS =====
 function renderArquivos() {
     const conteudo = document.getElementById('arquivos-conteudo');
+    const isRestrito = (arquivoNivelAcesso === 'expurgo');
+    const bannerTitulo = isRestrito ? 'ACESSO RESTRITO CONCEDIDO — ARQUIVO ÚNICO' : 'ACESSO DE CÓDIGO 2 CONCEDIDO';
+    const bannerDesc = isRestrito ? 'Autenticação verificada. Acesso limitado ao dossiê da Corrida do Expurgo.' : 'Autenticação de segundo nível verificada. Arquivos classificados liberados para visualização.';
     conteudo.innerHTML = `
         <div class="arquivos-granted">
             <div class="granted-banner">
-                <span class="granted-icon">✅</span>
+                <span class="granted-icon">${isRestrito ? '🔒' : '✅'}</span>
                 <div>
-                    <strong>ACESSO DE CÓDIGO 2 CONCEDIDO</strong>
-                    <p>Autenticação de segundo nível verificada. Arquivos classificados liberados para visualização.</p>
+                    <strong>${bannerTitulo}</strong>
+                    <p>${bannerDesc}</p>
                 </div>
             </div>
         </div>
@@ -141,7 +147,7 @@ function renderArquivos() {
                 <button class="btn-abrir-arquivo" onclick="abrirArquivo('expurgo')">ABRIR ARQUIVO</button>
             </div>
 
-            <!-- ARQUIVO 2: RYAN MELNICK -->
+            ${!isRestrito ? `<!-- ARQUIVO 2: RYAN MELNICK -->
             <div class="arquivo-card arquivo-amarelo" id="card-melnick">
                 <div class="arquivo-header">
                     <span class="arquivo-classificacao">CONFIDENCIAL</span>
@@ -203,7 +209,7 @@ function renderArquivos() {
                     <span>📄 ??? páginas</span>
                 </div>
                 <button class="btn-abrir-arquivo btn-bloqueado" onclick="abrirArquivo('gepetto')">ABRIR ARQUIVO</button>
-            </div>
+            </div>` : ''}
 
         </div>
 
@@ -651,6 +657,11 @@ function abrirArquivo(id) {
         mostrarModalBloqueio();
         return;
     }
+    // Bloquear acesso a arquivos que não sejam o Expurgo se o nível for restrito
+    if (arquivoNivelAcesso === 'expurgo' && id !== 'expurgo') {
+        showNotification('Acesso negado. Sua credencial permite apenas o arquivo da Corrida do Expurgo.', 'error');
+        return;
+    }
     const data = arquivosData[id];
     if (!data) return;
 
@@ -717,13 +728,19 @@ if (arquivosForm) {
         const usuario = document.getElementById('arquivos-usuario').value.trim();
         const senha = document.getElementById('arquivos-senha').value;
 
-        if (usuario === ARQUIVO_USER && senha === ARQUIVO_PASS) {
+        const credencial = ARQUIVO_CREDENCIAIS.find(c => c.usuario === usuario && c.senha === senha);
+        if (credencial) {
             arquivosAutenticado = true;
+            arquivoNivelAcesso = credencial.nivel;
             document.getElementById('arquivos-login-container').style.display = 'none';
             const conteudo = document.getElementById('arquivos-conteudo');
             conteudo.style.display = 'block';
             renderArquivos();
-            showNotification('Acesso Código 2 concedido. Arquivos classificados liberados.', 'success');
+            if (credencial.nivel === 'expurgo') {
+                showNotification('Acesso restrito concedido. Arquivo da Corrida do Expurgo liberado.', 'success');
+            } else {
+                showNotification('Acesso Código 2 concedido. Arquivos classificados liberados.', 'success');
+            }
         } else {
             arquivosError.textContent = 'ACESSO NEGADO — Credenciais de Código 2 inválidas.';
             arquivosError.style.color = '#c62828';
