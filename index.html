@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polícia Federal — Sistema Integrado de Segurança</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <span>🔒 Ambiente Seguro — Conexão Criptografada</span>
+        <span>24 de Fevereiro de 2026 | Brasília - DF</span>
+    </div>
+
+    <!-- HEADER -->
+    <header class="login-header">
+        <div class="logo-area">
+            <div class="logo-icon">★</div>
+            <div class="logo-text">
+                <h1>POLÍCIA FEDERAL</h1>
+                <span>Ministério da Justiça e Segurança Pública</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOGIN -->
+    <main class="login-main">
+        <div class="login-card">
+            <div class="login-card-header">
+                <h2>Acesso ao Sistema</h2>
+                <p>Sistema Integrado de Operações — SIO/PF</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Matrícula ou CPF</label>
+                    <input type="text" id="username" name="username" placeholder="Digite sua matrícula" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn-login">ENTRAR</button>
+                <div id="loginError" class="login-error"></div>
+            </form>
+            <div class="login-card-footer">
+                <a href="#">Esqueceu a senha?</a>
+                <a href="#">Primeiro acesso</a>
+            </div>
+        </div>
+
+        <div class="login-info">
+            <div class="info-box">
+                <h3>⚠️ Aviso Importante</h3>
+                <p>Este sistema é de uso exclusivo da Polícia Federal. O acesso não autorizado constitui crime previsto no Art. 154-A do Código Penal, com pena de detenção de 3 meses a 1 ano e multa.</p>
+            </div>
+            <div class="info-box">
+                <h3>📋 Comunicados</h3>
+                <ul>
+                    <li>Manutenção programada: 28/02/2026 das 02h às 06h.</li>
+                    <li>Novo módulo de rastreamento ativo desde 15/02/2026.</li>
+                    <li>Atualização de segurança aplicada em 10/02/2026.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="login-footer">
+        <div class="footer-content">
+            <p>Polícia Federal — Ministério da Justiça e Segurança Pública</p>
+            <p>SAS Quadra 06, Lotes 09/10 — CEP: 70070-060 — Brasília/DF</p>
+            <p>© 2026 — Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+</html>

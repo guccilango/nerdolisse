@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIO/PF — Sistema Integrado de Operações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <span>🔒 Sessão Ativa — Conexão Criptografada</span>
+        <span id="relogio">24/02/2026 00:00:00</span>
+    </div>
+
+    <!-- HEADER -->
+    <header class="dash-header">
+        <div class="dash-logo">
+            <div class="logo-icon">★</div>
+            <div>
+                <h1>POLÍCIA FEDERAL</h1>
+                <span class="subtitle">Sistema Integrado de Operações — SIO/PF</span>
+            </div>
+        </div>
+        <div class="dash-user-info">
+            <span class="user-badge">Carregando...</span>
+            <button onclick="if(confirm('Deseja realmente encerrar a sessão?')){sessionStorage.clear();window.location.href='index.html';}" class="btn-logout">⏻ SAIR</button>
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="dash-nav">
+        <a href="#" id="nav-home" class="active" data-section="home-section">📊 Painel Geral</a>
+        <a href="#" id="nav-ocorrencias" data-section="ocorrencias-section">📋 Ocorrências</a>
+        <a href="#" id="nav-operacoes" data-section="operacoes-section">🎯 Operações Ativas</a>
+        <a href="#" id="nav-consultas" data-section="consultas-section">🔍 Consultas</a>
+        <a href="#" id="nav-efetivo" data-section="efetivo-section">👥 Efetivo</a>
+        <a href="#" id="nav-arquivos" data-section="arquivos-section">🔒 Arquivos</a>
+        <a href="#" id="nav-perfil" data-section="perfil-section">👤 Meu Perfil</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="dash-main">
+
+        <!-- ========== PAINEL GERAL ========== -->
+        <section id="home-section">
+            <h2>Painel Geral</h2>
+            <div class="stats-grid">
+                <div class="stat-card stat-blue">
+                    <div class="stat-number">847</div>
+                    <div class="stat-label">Ocorrências no mês</div>
+                </div>
+                <div class="stat-card stat-green">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Operações Ativas</div>
+                </div>
+                <div class="stat-card stat-yellow">
+                    <div class="stat-number">38</div>
+                    <div class="stat-label">Mandados Pendentes</div>
+                </div>
+                <div class="stat-card stat-red">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Alertas Críticos</div>
+                </div>
+            </div>
+
+            <div class="dash-grid-2col">
+                <div class="card">
+                    <h3>📋 Últimos Registros</h3>
+                    <table class="table-clean">
+                        <thead><tr><th>Data</th><th>Tipo</th><th>Descrição</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>24/02</td><td>Prisão</td><td>Mandado cumprido — Operação Trovão</td><td class="status-green">Concluído</td></tr>
+                            <tr><td>23/02</td><td>Apreensão</td><td>2 ton. mercadorias — Fronteira Norte</td><td class="status-green">Concluído</td></tr>
+                            <tr><td>23/02</td><td>Investigação</td><td>Lavagem de dinheiro — célula SP-03</td><td class="status-yellow">Em andamento</td></tr>
+                            <tr><td>22/02</td><td>Escolta</td><td>Proteção de testemunha — Caso Meridiano</td><td class="status-green">Concluído</td></tr>
+                            <tr><td>22/02</td><td>Cibercrime</td><td>Invasão a sistema bancário — rastreamento</td><td class="status-red">Urgente</td></tr>
+                            <tr><td>21/02</td><td>Prisão</td><td>Captura de foragido — Lista Interpol</td><td class="status-green">Concluído</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card">
+                    <h3>⚠️ Alertas do Sistema</h3>
+                    <div class="alert alert-red">ALERTA VERMELHO — Ameaça de atentado em Brasília. Nível de segurança elevado até segunda ordem.</div>
+                    <div class="alert alert-yellow">ATENÇÃO — Foragido de alta periculosidade identificado na região Sul. Foto distribuída às unidades.</div>
+                    <div class="alert alert-blue">INFO — Novo lote de coletes balísticos disponível para retirada no almoxarifado central.</div>
+                    <div class="alert alert-blue">INFO — Treinamento de tiro tático no dia 01/03/2026 às 08h — Centro de Treinamento Brasília.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📰 Comunicados Internos</h3>
+                <ul class="comunicados-list">
+                    <li><strong>20/02/2026</strong> — Nova diretriz de abordagem para operações em áreas urbanas densas. Consultar Portaria nº 1.847/2026.</li>
+                    <li><strong>18/02/2026</strong> — Atualização do sistema SIO/PF versão 4.7.2. Melhorias em rastreamento e geolocalização de alvos.</li>
+                    <li><strong>15/02/2026</strong> — Resultado do concurso interno para promoção ao cargo de Delegado. Publicação no Diário Oficial.</li>
+                    <li><strong>12/02/2026</strong> — Inauguração do novo Laboratório Forense Digital na unidade de São Paulo.</li>
+                    <li><strong>10/02/2026</strong> — Parceria firmada com FBI e Interpol para troca de informações sobre crime organizado transnacional.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== OCORRÊNCIAS ========== -->
+        <section id="ocorrencias-section" style="display:none;">
+            <h2>Registro de Ocorrências</h2>
+            <div class="filter-bar">
+                <select id="filtro-tipo">
+                    <option value="">Tipo: Todos</option>
+                    <option value="prisao">Prisão</option>
+                    <option value="apreensao">Apreensão</option>
+                    <option value="investigacao">Investigação</option>
+                    <option value="resgate">Resgate</option>
+                </select>
+                <select id="filtro-status">
+                    <option value="">Status: Todos</option>
+                    <option value="concluido">Concluído</option>
+                    <option value="andamento">Em andamento</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+                <input type="text" id="filtro-busca" placeholder="Buscar por palavra-chave...">
+            </div>
+            <table class="table-full">
+                <thead>
+                    <tr><th>Nº</th><th>Data</th><th>Tipo</th><th>Localidade</th><th>Descrição</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>OC-2026-1847</td><td>24/02/2026</td><td>Prisão</td><td>São Paulo/SP</td><td>Cumprimento de mandado contra líder de organização criminosa envolvida em lavagem de dinheiro através de 14 empresas de fachada no setor imobiliário. Suspeito Carlos R. Mendonça capturado em cobertura na Av. Paulista com documentos falsos, R$ 2,3 milhões em espécie e 3 armas não registradas.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1846</td><td>23/02/2026</td><td>Apreensão</td><td>Foz do Iguaçu/PR</td><td>Interceptação de carregamento de contrabando na ponte da Amizade. 2 toneladas de eletrônicos falsificados e 800kg de cigarros ilegais. 5 indivíduos detidos, incluindo 2 com mandado em aberto pela Interpol.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1845</td><td>23/02/2026</td><td>Investigação</td><td>Brasília/DF</td><td>Desmantelamento de célula de hackers responsáveis por invasão de sistemas de 3 bancos federais. Prejuízo estimado de R$ 47 milhões. Operação conjunta com ABIN. 3 presos, 12 computadores e 4 servidores apreendidos.</td><td class="status-yellow">Em andamento</td></tr>
+                    <tr><td>OC-2026-1844</td><td>22/02/2026</td><td>Resgate</td><td>Belo Horizonte/MG</td><td>Resgate de 12 vítimas de tráfico humano mantidas em regime de trabalho análogo à escravidão em fábrica clandestina de roupas. 4 traficantes presos. Operação com apoio do MPT e Receita Federal.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1843</td><td>22/02/2026</td><td>Apreensão</td><td>Manaus/AM</td><td>Interceptação de embarcação no Rio Solimões transportando 1,5 tonelada de cocaína com destino à Europa. Tripulação de 6 pessoas detida. Droga avaliada em R$ 120 milhões.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1842</td><td>21/02/2026</td><td>Prisão</td><td>Curitiba/PR</td><td>Captura de foragido internacional listado pela Interpol. Marcos V. Souza, ex-tesoureiro de organização criminosa, estava vivendo sob identidade falsa como empresário do ramo alimentício.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1841</td><td>21/02/2026</td><td>Investigação</td><td>Recife/PE</td><td>Investigação de desvio de verbas públicas no valor de R$ 18 milhões destinadas a obras de infraestrutura. 3 secretários municipais e 2 empreiteiros sob investigação.</td><td class="status-yellow">Em andamento</td></tr>
+                    <tr><td>OC-2026-1840</td><td>20/02/2026</td><td>Apreensão</td><td>Campinas/SP</td><td>Apreensão de arsenal de guerra em sítio rural: 47 fuzis, 12 pistolas, 3.000 munições e 8 granadas. Material destinado a facção criminosa. 2 pessoas presas no local.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1839</td><td>19/02/2026</td><td>Prisão</td><td>Salvador/BA</td><td>Prisão de médico envolvido em esquema de emissão de laudos falsos para fraude previdenciária. Prejuízo estimado de R$ 5 milhões ao INSS. 240 laudos fraudulentos identificados.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1838</td><td>18/02/2026</td><td>Investigação</td><td>Porto Alegre/RS</td><td>Monitoramento de rede de falsificação de passaportes e vistos diplomáticos. 3 gráficas clandestinas identificadas. Operação em fase de coleta de provas para mandados judiciais.</td><td class="status-red">Urgente</td></tr>
+                    <tr><td>OC-2026-1837</td><td>17/02/2026</td><td>Resgate</td><td>Belém/PA</td><td>Operação de busca e resgate de agente infiltrado cuja cobertura foi comprometida em operação contra garimpeiros ilegais. Agente resgatado com sucesso por equipe tática.</td><td class="status-green">Concluído</td></tr>
+                    <tr><td>OC-2026-1836</td><td>16/02/2026</td><td>Apreensão</td><td>Natal/RN</td><td>Apreensão de 800 kg de maconha prensada em caminhão de carga com fundo falso na BR-101. Motorista e acompanhante presos em flagrante.</td><td class="status-green">Concluído</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========== OPERAÇÕES ATIVAS ========== -->
+        <section id="operacoes-section" style="display:none;">
+            <h2>Operações em Andamento</h2>
+            <div class="ops-grid">
+                <div class="op-card op-critica">
+                    <div class="op-badge">CRÍTICA</div>
+                    <h3>Operação Trovão</h3>
+                    <p><strong>Início:</strong> 10/01/2026 | <strong>Líder:</strong> Del. Fernanda Araújo</p>
+                    <p>Desarticulação de organização criminosa de lavagem de dinheiro com ramificações em 6 estados. Fase 3 de 4 concluída. 23 mandados cumpridos de 31 expedidos. Próxima ação: cumprimento simultâneo em SP, RJ e MG.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:74%"></div></div>
+                    <span class="op-percent">74% concluída</span>
+                </div>
+                <div class="op-card op-alta">
+                    <div class="op-badge">ALTA PRIORIDADE</div>
+                    <h3>Operação Ciber</h3>
+                    <p><strong>Início:</strong> 05/02/2026 | <strong>Líder:</strong> Del. Ricardo Monteiro</p>
+                    <p>Investigação e combate a crimes cibernéticos contra infraestrutura crítica nacional. Grupo hacker "Phantom" identificado como responsável. Rastreamento de servidores em 4 países. Parceria ativa com FBI e Europol.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:45%"></div></div>
+                    <span class="op-percent">45% concluída</span>
+                </div>
+                <div class="op-card op-alta">
+                    <div class="op-badge">ALTA PRIORIDADE</div>
+                    <h3>Operação Fronteira Segura</h3>
+                    <p><strong>Início:</strong> 01/01/2026 | <strong>Líder:</strong> Del. Paulo Henrique Costa</p>
+                    <p>Patrulhamento intensivo das fronteiras Norte e Oeste. 47 apreensões realizadas no período. 89 indivíduos detidos. Cooperação com Exército, Marinha e forças policiais de Colômbia, Peru e Bolívia.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:60%"></div></div>
+                    <span class="op-percent">60% concluída</span>
+                </div>
+                <div class="op-card op-media">
+                    <div class="op-badge">MÉDIA</div>
+                    <h3>Operação Ouro Negro</h3>
+                    <p><strong>Início:</strong> 15/01/2026 | <strong>Líder:</strong> Del. Marina S. Ribeiro</p>
+                    <p>Investigação de esquema de extração ilegal de petróleo em plataformas offshore. Desvio estimado em R$ 230 milhões. 4 engenheiros e 2 diretores de empresa pública sob monitoramento.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:35%"></div></div>
+                    <span class="op-percent">35% concluída</span>
+                </div>
+                <div class="op-card op-critica">
+                    <div class="op-badge">CRÍTICA</div>
+                    <h3>Operação Falcão</h3>
+                    <p><strong>Início:</strong> 20/02/2026 | <strong>Líder:</strong> Del. André L. Batista</p>
+                    <p>Monitoramento aéreo e interceptação de rotas de tráfico aéreo clandestino. 3 aeronaves interceptadas. 1 abatida sobre território inóspito. Base de operações em Campo Grande/MS com suporte da FAB.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:20%"></div></div>
+                    <span class="op-percent">20% concluída</span>
+                </div>
+                <div class="op-card op-media">
+                    <div class="op-badge">MÉDIA</div>
+                    <h3>Operação Guardião</h3>
+                    <p><strong>Início:</strong> 08/02/2026 | <strong>Líder:</strong> Del. Cláudia Ferreira</p>
+                    <p>Programa de proteção a 7 testemunhas-chave de processos contra organizações criminosas de atuação nacional. Relocação, monitoramento 24h e escolta permanente. Sem incidentes até o momento.</p>
+                    <div class="op-progress"><div class="op-bar" style="width:50%"></div></div>
+                    <span class="op-percent">50% concluída</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONSULTAS ========== -->
+        <section id="consultas-section" style="display:none;">
+            <h2>Consultas ao Banco de Dados</h2>
+            <p class="section-desc">Consulte registros de indivíduos, veículos, mandados e processos no banco de dados integrado da Polícia Federal.</p>
+            <div class="consulta-tabs">
+                <button class="consulta-tab active" data-tab="pessoa">Pessoa</button>
+                <button class="consulta-tab" data-tab="veiculo">Veículo</button>
+                <button class="consulta-tab" data-tab="mandado">Mandado</button>
+            </div>
+            <div class="consulta-forms">
+                <form id="form-pessoa" class="consulta-form">
+                    <div class="form-row">
+                        <div class="form-group"><label>Nome Completo</label><input type="text" id="consulta-nome" placeholder="Ex: João Silva"></div>
+                        <div class="form-group"><label>CPF</label><input type="text" id="consulta-cpf" placeholder="000.000.000-00"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>RG</label><input type="text" id="consulta-rg" placeholder="00.000.000-0"></div>
+                        <div class="form-group"><label>Matrícula PF</label><input type="text" id="consulta-matricula" placeholder="Ex: 78452"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">CONSULTAR</button>
+                </form>
+                <form id="form-veiculo" class="consulta-form" style="display:none;">
+                    <div class="form-row">
+                        <div class="form-group"><label>Placa</label><input type="text" id="consulta-placa" placeholder="ABC-1234"></div>
+                        <div class="form-group"><label>Chassi</label><input type="text" id="consulta-chassi" placeholder="Nº do chassi"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">CONSULTAR</button>
+                </form>
+                <form id="form-mandado" class="consulta-form" style="display:none;">
+                    <div class="form-row">
+                        <div class="form-group"><label>Nº do Mandado</label><input type="text" id="consulta-mandado-num" placeholder="MD-2026-XXXX"></div>
+                        <div class="form-group"><label>Nome do Investigado</label><input type="text" id="consulta-mandado-nome" placeholder="Nome completo"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">CONSULTAR</button>
+                </form>
+            </div>
+            <div id="consulta-result" class="consulta-result"></div>
+        </section>
+
+        <!-- ========== EFETIVO ========== -->
+        <section id="efetivo-section" style="display:none;">
+            <h2>Efetivo Nacional</h2>
+            <p class="section-desc">Visão geral do efetivo distribuído nas superintendências regionais da Polícia Federal.</p>
+            <table class="table-full">
+                <thead>
+                    <tr><th>Unidade</th><th>Delegados</th><th>Agentes</th><th>Escrivães</th><th>Peritos</th><th>Total</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>SR/SP — São Paulo</td><td>42</td><td>318</td><td>67</td><td>54</td><td>481</td><td class="status-green">Operacional</td></tr>
+                    <tr><td>SR/RJ — Rio de Janeiro</td><td>38</td><td>285</td><td>60</td><td>48</td><td>431</td><td class="status-green">Operacional</td></tr>
+                    <tr><td>SR/DF — Brasília</td><td>55</td><td>410</td><td>85</td><td>72</td><td>622</td><td class="status-green">Operacional</td></tr>
+                    <tr><td>SR/MG — Minas Gerais</td><td>30</td><td>220</td><td>48</td><td>36</td><td>334</td><td class="status-green">Operacional</td></tr>
+                    <tr><td>SR/PR — Paraná</td><td>25</td><td>190</td><td>40</td><td>30</td><td>285</td><td class="status-yellow">Déficit de pessoal</td></tr>
+                    <tr><td>SR/RS — Rio Grande do Sul</td><td>22</td><td>175</td><td>38</td><td>28</td><td>263</td><td class="status-green">Operacional</td></tr>
+                    <tr><td>SR/BA — Bahia</td><td>20</td><td>160</td><td>35</td><td>25</td><td>240</td><td class="status-yellow">Déficit de pessoal</td></tr>
+                    <tr><td>SR/AM — Amazonas</td><td>18</td><td>145</td><td>30</td><td>22</td><td>215</td><td class="status-red">Reforço necessário</td></tr>
+                    <tr><td>SR/PA — Pará</td><td>16</td><td>130</td><td>28</td><td>20</td><td>194</td><td class="status-red">Reforço necessário</td></tr>
+                    <tr><td>SR/PE — Pernambuco</td><td>19</td><td>155</td><td>33</td><td>24</td><td>231</td><td class="status-green">Operacional</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========== ARQUIVOS ========== -->
+        <section id="arquivos-section" style="display:none;">
+            <h2>📁 Arquivos Classificados</h2>
+            <p class="section-desc">Acesso restrito — Código 2 ou superior. Autenticação de segundo nível obrigatória.</p>
+            <div id="arquivos-login-container" class="arquivos-login-box">
+                <div class="lock-icon">🔐</div>
+                <h3>Autenticação de Código 2</h3>
+                <p>Insira suas credenciais de nível classificado para acessar os dossiês restritos.</p>
+                <form id="arquivos-login-form">
+                    <div class="form-group">
+                        <label for="arquivos-usuario">Identificador</label>
+                        <input type="text" id="arquivos-usuario" required placeholder="Codinome de acesso">
+                    </div>
+                    <div class="form-group">
+                        <label for="arquivos-senha">Chave de Acesso</label>
+                        <input type="password" id="arquivos-senha" required placeholder="Chave classificada">
+                    </div>
+                    <button type="submit" class="btn-primary" style="margin-top:8px;">🔓 AUTENTICAR</button>
+                </form>
+                <div id="arquivos-login-error" class="login-error" style="margin-top:12px;"></div>
+            </div>
+            <div id="arquivos-conteudo" style="display:none;"></div>
+        </section>
+
+        <!-- ========== PERFIL ========== -->
+        <section id="perfil-section" style="display:none;">
+            <h2>Meu Perfil</h2>
+            <div class="perfil-grid">
+                <div class="perfil-card">
+                    <div class="perfil-avatar">JS</div>
+                    <h3>João da Silva</h3>
+                    <span class="perfil-cargo">Agente de Polícia Federal — Classe Especial</span>
+                </div>
+                <div class="perfil-details">
+                    <table class="table-profile">
+                        <tr><td><strong>Matrícula</strong></td><td>78452</td></tr>
+                        <tr><td><strong>CPF</strong></td><td>123.456.789-00</td></tr>
+                        <tr><td><strong>Lotação</strong></td><td>SR/SP — Superintendência Regional São Paulo</td></tr>
+                        <tr><td><strong>Divisão</strong></td><td>DELINST — Delegacia de Repressão a Crimes Financeiros</td></tr>
+                        <tr><td><strong>Tempo de serviço</strong></td><td>14 anos, 3 meses</td></tr>
+                        <tr><td><strong>Nível de acesso</strong></td><td>NÍVEL 3 — CONFIDENCIAL</td></tr>
+                        <tr><td><strong>Arma funcional</strong></td><td>Glock G19 — Nº série: BRF-44571</td></tr>
+                        <tr><td><strong>Viatura designada</strong></td><td>Hilux SW4 — Placa PF-7842</td></tr>
+                        <tr><td><strong>Último treinamento</strong></td><td>Tiro Tático Avançado — 15/01/2026</td></tr>
+                        <tr><td><strong>Condecorações</strong></td><td>Mérito Policial (2020), Medalha de Bravura (2023)</td></tr>
+                        <tr><td><strong>Último acesso</strong></td><td>24/02/2026 às 09:47</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="dash-footer">
+        <div class="footer-content">
+            <p><strong>Polícia Federal</strong> — Ministério da Justiça e Segurança Pública</p>
+            <p>Sistema Integrado de Operações — SIO/PF v4.7.2 | Classificação: RESTRITO</p>
+            <p>SAS Quadra 06, Lotes 09/10 — CEP: 70070-060 — Brasília/DF</p>
+            <p>© 2026 — Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="portal.js"></script>
+</body>
+</html>
